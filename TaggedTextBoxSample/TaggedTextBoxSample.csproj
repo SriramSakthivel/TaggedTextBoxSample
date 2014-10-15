@@ -73,6 +73,7 @@
     <Compile Include="EvernoteTagControl.cs" />
     <Compile Include="EvernoteTagEventArgs.cs" />
     <Compile Include="EvernoteTagItem.cs" />
+    <Compile Include="EvernoteTagItemComparer.cs" />
     <Compile Include="ViewModel.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>

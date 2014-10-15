@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -88,7 +89,6 @@ namespace TaggedTextBoxSample
             }
         }
 
-
         /// <summary>
         /// Raises the TagClick event
         /// </summary>
@@ -96,6 +96,16 @@ namespace TaggedTextBoxSample
         {
             if (this.TagClick != null)
                 TagClick(this, new EvernoteTagEventArgs(tag));
+        }
+
+        internal void FinishAdding(EvernoteTagItem tag)
+        {
+            var comparer = new EvernoteTagItemComparer();
+            if (!AllTags.Contains(tag.Text, StringComparer.Ordinal) ||
+                ItemsSource.Cast<EvernoteTagItem>().Count(x => comparer.Equals(x, tag)) > 1)
+            {
+                RemoveTag(tag, true);
+            }
         }
     }
 }

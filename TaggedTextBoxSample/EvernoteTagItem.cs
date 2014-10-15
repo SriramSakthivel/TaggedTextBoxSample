@@ -50,7 +50,7 @@ namespace TaggedTextBoxSample
             {
                 btn.Loaded += (s, e) =>
                 {
-                    Button b = s as Button;
+                    Button b = (Button)s;
                     var btnDelete = b.Template.FindName("PART_DeleteTagButton", b) as Button; // will only be found once button is loaded
                     if (btnDelete != null)
                     {
@@ -76,7 +76,6 @@ namespace TaggedTextBoxSample
         /// </summary>
         void btnDelete_Click(object sender, RoutedEventArgs e)
         {
-
             var item = FindUpVisualTree<EvernoteTagItem>(sender as FrameworkElement);
             var parent = GetParent();
             if (item != null && parent != null)
@@ -109,6 +108,7 @@ namespace TaggedTextBoxSample
                         {
                             case (Key.Enter):  // accept tag
                                 parent.Focus();
+                                parent.FinishAdding(this);
                                 break;
                             case (Key.Escape): // reject tag
                                 parent.Focus();
@@ -129,7 +129,10 @@ namespace TaggedTextBoxSample
             this.IsEditing = false;
             var parent = GetParent();
             if (parent != null)
+            {
+                parent.FinishAdding(this);
                 parent.IsEditing = false;
+            }
         }
 
         private EvernoteTagControl GetParent()
