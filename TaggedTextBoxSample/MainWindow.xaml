@@ -1,0 +1,23 @@
+﻿<Window x:Class="TaggedTextBoxSample.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:local="clr-namespace:TaggedTextBoxSample"
+        xmlns:system="clr-namespace:System;assembly=mscorlib"
+        Title="MainWindow" Height="350" Width="525">
+    <!--<Window.DataContext>
+        <ViewModel /
+    </Window.DataContext>-->
+
+    <Grid>
+        <!-- todo: implement ICommand properties on EvernoteTagControl to allow easy binding to the viewmodel. Alternatively, the user could use a behavior to handle TagClick, and if necessary TagAdded/TagRemoved -->
+        <local:EvernoteTagControl ItemsSource="{Binding SelectedTags}" TagClick="EvernoteTagControl_OnTagClick" >
+            <local:EvernoteTagControl.AllTags>
+                <system:String>C#</system:String>
+                <system:String>Java</system:String>
+                <system:String>Php</system:String>
+                <system:String>Winforms</system:String>
+                <system:String>Multithreading</system:String>
+            </local:EvernoteTagControl.AllTags>
+        </local:EvernoteTagControl>
+    </Grid>
+</Window>
