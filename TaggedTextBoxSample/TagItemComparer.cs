@@ -3,14 +3,14 @@ using System.Collections.Generic;
 
 namespace TaggedTextBoxSample
 {
-    public class EvernoteTagItemComparer : IEqualityComparer<EvernoteTagItem>
+    public class TagItemComparer : IEqualityComparer<TagItem>
     {
-        public bool Equals(EvernoteTagItem x, EvernoteTagItem y)
+        public bool Equals(TagItem x, TagItem y)
         {
             return StringComparer.Ordinal.Equals(x.Text, y.Text);
         }
 
-        public int GetHashCode(EvernoteTagItem obj)
+        public int GetHashCode(TagItem obj)
         {
             return StringComparer.Ordinal.GetHashCode(obj.Text);
         }

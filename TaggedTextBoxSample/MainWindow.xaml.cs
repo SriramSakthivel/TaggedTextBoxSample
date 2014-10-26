@@ -25,7 +25,7 @@ namespace TaggedTextBoxSample
             InitializeComponent();
         }
 
-        private void EvernoteTagControl_OnTagClick(object sender, EvernoteTagEventArgs e)
+        private void TagControl_OnTagClick(object sender, TagEventArgs e)
         {
             MessageBox.Show(e.Item.Text);
         }

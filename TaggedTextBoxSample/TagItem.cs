@@ -8,17 +8,16 @@ namespace TaggedTextBoxSample
     [TemplatePart(Name = "PART_InputBox", Type = typeof(AutoCompleteBox))]
     [TemplatePart(Name = "PART_DeleteTagButton", Type = typeof(Button))]
     [TemplatePart(Name = "PART_TagButton", Type = typeof(Button))]
-    public class EvernoteTagItem : Control
+    public class TagItem : Control
     {
-
-        static EvernoteTagItem()
+        static TagItem()
         {
             // lookless control, get default style from generic.xaml
-            DefaultStyleKeyProperty.OverrideMetadata(typeof(EvernoteTagItem), new FrameworkPropertyMetadata(typeof(EvernoteTagItem)));
+            DefaultStyleKeyProperty.OverrideMetadata(typeof(TagItem), new FrameworkPropertyMetadata(typeof(TagItem)));
         }
 
-        public EvernoteTagItem() { }
-        public EvernoteTagItem(string text)
+        public TagItem() { }
+        public TagItem(string text)
             : this()
         {
             this.Text = text;
@@ -26,11 +25,11 @@ namespace TaggedTextBoxSample
 
         // Text
         public string Text { get { return (string)GetValue(TextProperty); } set { SetValue(TextProperty, value); } }
-        public static readonly DependencyProperty TextProperty = DependencyProperty.Register("Text", typeof(string), typeof(EvernoteTagItem), new PropertyMetadata(null));
+        public static readonly DependencyProperty TextProperty = DependencyProperty.Register("Text", typeof(string), typeof(TagItem), new PropertyMetadata(null));
 
         // IsEditing, readonly
         public bool IsEditing { get { return (bool)GetValue(IsEditingProperty); } internal set { SetValue(IsEditingPropertyKey, value); } }
-        private static readonly DependencyPropertyKey IsEditingPropertyKey = DependencyProperty.RegisterReadOnly("IsEditing", typeof(bool), typeof(EvernoteTagItem), new FrameworkPropertyMetadata(false));
+        private static readonly DependencyPropertyKey IsEditingPropertyKey = DependencyProperty.RegisterReadOnly("IsEditing", typeof(bool), typeof(TagItem), new FrameworkPropertyMetadata(false));
         public static readonly DependencyProperty IsEditingProperty = IsEditingPropertyKey.DependencyProperty;
 
         /// <summary>
@@ -63,7 +62,7 @@ namespace TaggedTextBoxSample
                 {
                     var parent = GetParent();
                     if (parent != null)
-                        parent.RaiseTagClick(this); // raise the TagClick event of the EvernoteTagControl
+                        parent.RaiseTagClick(this); // raise the TagClick event of the TagControl
                 };
             }
 
@@ -76,7 +75,7 @@ namespace TaggedTextBoxSample
         /// </summary>
         void btnDelete_Click(object sender, RoutedEventArgs e)
         {
-            var item = FindUpVisualTree<EvernoteTagItem>(sender as FrameworkElement);
+            var item = FindUpVisualTree<TagItem>(sender as FrameworkElement);
             var parent = GetParent();
             if (item != null && parent != null)
                 parent.RemoveTag(item);
@@ -135,9 +134,9 @@ namespace TaggedTextBoxSample
             }
         }
 
-        private EvernoteTagControl GetParent()
+        private TagControl GetParent()
         {
-            return FindUpVisualTree<EvernoteTagControl>(this);
+            return FindUpVisualTree<TagControl>(this);
         }
 
         /// <summary>

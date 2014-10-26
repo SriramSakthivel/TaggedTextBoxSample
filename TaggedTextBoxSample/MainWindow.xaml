@@ -9,15 +9,15 @@
     </Window.DataContext>-->
 
     <Grid>
-        <!-- todo: implement ICommand properties on EvernoteTagControl to allow easy binding to the viewmodel. Alternatively, the user could use a behavior to handle TagClick, and if necessary TagAdded/TagRemoved -->
-        <local:EvernoteTagControl ItemsSource="{Binding SelectedTags}" TagClick="EvernoteTagControl_OnTagClick" >
-            <local:EvernoteTagControl.AllTags>
+        <!-- todo: implement ICommand properties on TagControl to allow easy binding to the viewmodel. Alternatively, the user could use a behavior to handle TagClick, and if necessary TagAdded/TagRemoved -->
+        <local:TagControl ItemsSource="{Binding SelectedTags}" TagClick="TagControl_OnTagClick" >
+            <local:TagControl.AllTags>
                 <system:String>C#</system:String>
                 <system:String>Java</system:String>
                 <system:String>Php</system:String>
                 <system:String>Winforms</system:String>
                 <system:String>Multithreading</system:String>
-            </local:EvernoteTagControl.AllTags>
-        </local:EvernoteTagControl>
+            </local:TagControl.AllTags>
+        </local:TagControl>
     </Grid>
 </Window>

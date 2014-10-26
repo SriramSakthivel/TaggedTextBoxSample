@@ -70,10 +70,14 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="EvernoteTagControl.cs" />
-    <Compile Include="EvernoteTagEventArgs.cs" />
-    <Compile Include="EvernoteTagItem.cs" />
-    <Compile Include="EvernoteTagItemComparer.cs" />
+    <Compile Include="TagControl.cs" />
+    <Compile Include="TagEventArgs.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TagItem.cs" />
+    <Compile Include="TagItemComparer.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="ViewModel.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>

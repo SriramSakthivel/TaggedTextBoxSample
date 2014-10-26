@@ -10,8 +10,8 @@ namespace TaggedTextBoxSample
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
-        private List<EvernoteTagItem> _selectedTags = new List<EvernoteTagItem>();
-        public List<EvernoteTagItem> SelectedTags
+        private List<TagItem> _selectedTags = new List<TagItem>();
+        public List<TagItem> SelectedTags
         {
             get { return _selectedTags; }
             set
@@ -24,7 +24,7 @@ namespace TaggedTextBoxSample
 
         public ViewModel()
         {
-            this.SelectedTags = new List<EvernoteTagItem>() { new EvernoteTagItem("news"), new EvernoteTagItem("priority") };
+            this.SelectedTags = new List<TagItem>() { new TagItem("news"), new TagItem("priority") };
         }
 
         private void OnPropertyChanged(string propertyName)
